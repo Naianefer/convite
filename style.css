@@ -1,0 +1,100 @@
+body {
+    margin: 0;
+    font-family: 'Georgia', serif;
+    background: #fff url('assets/marmore.png') no-repeat center center;
+    background-size: cover;
+    text-align: center;
+    color: #3e3e3e;
+  }
+  
+  .convite-container {
+    padding: 20px;
+  }
+  
+  .topo h1 {
+    font-family: 'Cursive', cursive;
+    font-size: 2.5em;
+    margin: 10px 0;
+  }
+  
+  .topo span {
+    font-family: 'Cursive', cursive;
+    font-size: 1.5em;
+  }
+  
+  .subtitulo {
+    font-size: 1.2em;
+    margin-bottom: 20px;
+  }
+  
+  .flores-topo {
+    width: 120px;
+    margin-top: 10px;
+  }
+  
+  .envelope img {
+    width: 220px;
+    cursor: pointer;
+  }
+  
+  .toque {
+    margin-top: 12px;
+    font-style: italic;
+    color: #666;
+  }
+  
+  .icones {
+    margin-top: 25px;
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    flex-wrap: wrap;
+  }
+
+  .icones a {
+        color: inherit;
+        text-decoration: none;
+    
+  }
+  
+  .icone {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-size: 0.9em;
+  }
+  
+  .icone img {
+    width: 40px;
+    margin-bottom: 5px;
+  }
+  
+  .video-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.8);
+    z-index: 999;
+    flex-direction: column;
+  }
+  
+  .video-modal video {
+    width: 80%;
+    max-width: 600px;
+    border-radius: 10px;
+  }
+  
+  .video-modal button {
+    margin-top: 15px;
+    padding: 8px 16px;
+    background: #fff;
+    border: none;
+    font-size: 1em;
+    cursor: pointer;
+  }
+  

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Convite de Casamento</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="convite-container">
+    <div class="topo">
+      <img src="assets/10224313.png" alt="flores" class="flores-topo">
+      <h1>Carolina <span>&</span> Heitor</h1>
+      <p class="subtitulo">Abra a carta!</p>
+    </div>
+
+    <div class="envelope" onclick="abrirVideo()">
+      <img src="assets/envelope2.jpg" alt="Envelope" />
+    </div>
+
+    <p class="toque">Clique para interagir</p>
+
+    <div class="icones">
+        <a class="icone" href="https://www.casamentos.com.br/artigos/lista-de-presentes--c4908" target="_blank">
+            <img src="assets/presente.png" alt="Lista de presentes" />
+            <p>Lista de presentes</p>
+          </a>
+          
+      <a class="icone" href="https://wa.me/5585992069566?text=Eu%20vou%20para%20esse%20casamento!" target="_blank">
+        <img src="assets/check.png" alt="Confirme presença" />
+        <p>Confirme sua presença</p>
+      </a>
+      
+      <a class="icone" href="https://www.google.com/search?q=Buffet+Le+Jardin&sca_esv=68ea10725fc9b20e&sxsrf=AHTn8zogH_cdqvZYPXGjzUEtZN9bQO9_mQ%3A1746754155873&ei=a1odaOyPNZrZ5OUPs7qMSA&ved=0ahUKEwis8eGnnpWNAxWaLLkGHTMdAwkQ4dUDCBA&uact=5&oq=Buffet+Le+Jardin&gs_lp=Egxnd3Mtd2l6LXNlcnAiEEJ1ZmZldCBMZSBKYXJkaW4yCxAuGIAEGMcBGK8BMgYQABgWGB4yBhAAGBYYHjIGEAAYFhgeMgYQABgWGB4yBhAAGBYYHjIGEAAYFhgeMgYQABgWGB4yCBAAGBYYChgeMgYQABgWGB4yGhAuGIAEGMcBGK8BGJcFGNwEGN4EGOAE2AEBSKcFUABYAHAAeAGQAQCYAcgBoAHIAaoBAzItMbgBA8gBAPgBAvgBAZgCAaAC2gGYAwC6BgYIARABGBSSBwMyLTGgB9IJsgcDMi0xuAfaAQ&sclient=gws-wiz-serp" target="_blank">
+        <img src="assets/maps.png" alt="Localização" />
+        <p>Localização</p>
+      </a>
+      
+    </div>
+  </div>
+
+  <div class="video-modal" id="videoModal">
+    <video src="assets/testee.mp4" controls autoplay muted></video>
+    <button onclick="fecharVideo()">Fechar</button>
+  </div>
+
+  <script>
+    function abrirVideo() {
+      document.getElementById('videoModal').style.display = 'flex';
+    }
+
+    function fecharVideo() {
+      document.getElementById('videoModal').style.display = 'none';
+      const video = document.querySelector('#videoModal video');
+      video.pause();
+      video.currentTime = 0;
+    }
+  </script>
+</body>
+</html>
