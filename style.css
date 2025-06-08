@@ -154,7 +154,13 @@ body {
 
   .icone img {
     width: 35px; /* Ajuste o tamanho da imagem */
+     filter: brightness(0.1) contrast(2); /* Deixa as imagens mais escuras e destacadas */
   }
+
+   .icones a {
+    color: #000000 !important; /* Preto escuro */
+  }
+
 
   /* Ajustes do modal de vídeo */
   .video-modal video {
