@@ -25,7 +25,7 @@ body {
   transform: translateX(-50%);
   z-index: 10;
   text-align: center;
-  background-color: white;
+  /* background-color: white; */
   color: black;
   padding: 10px 20px; /* Aumentei o padding para mais espaço ao redor do texto */
   display: inline-block;
@@ -41,11 +41,12 @@ body {
 
 /* Ajuste do subtítulo e toque */
 .subtitulo, .toque {
-  font-size: 1.8em;
+  font-size: 3em;
   margin-bottom: 20px;
+  margin-top:-2rem;
   color: #000;
   font-weight: 900;
-  background-color: white;  /* Fundo branco ao redor do texto */
+  /* background-color: white;   */
   padding: 10px 20px;       /* Espaçamento interno */
   border-radius: 4px;       /* Canto arredondado */
   display: inline-block;
@@ -116,14 +117,26 @@ body {
   max-width: 600px;
   border-radius: 10px;
 }
-
 .video-modal button {
   margin-top: 15px;
-  padding: 8px 16px;
-  background: #fff;
+  padding: 10px 20px;
+  background: #000; /* Preto escuro */
+  color: #fff;
   border: none;
   font-size: 1em;
+  font-weight: bold;
   cursor: pointer;
+  border-radius: 5px;
+  z-index: 1000;
+}
+
+/* Para garantir visibilidade e responsividade no celular */
+@media screen and (max-width: 768px) {
+  .video-modal button {
+    position: relative;
+    font-size: 1.2em;
+    padding: 12px 24px;
+  }
 }
 
 /* Estilos Responsivos */
