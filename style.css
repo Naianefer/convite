@@ -96,8 +96,6 @@ body {
   width: 40px;
   margin-bottom: 5px;
 }
-
-/* Modal de vídeo */
 .video-modal {
   position: fixed;
   top: 0;
@@ -110,34 +108,38 @@ body {
   background-color: rgba(0, 0, 0, 0.8);
   z-index: 999;
   flex-direction: column;
+  padding: 20px;
+  box-sizing: border-box;
 }
 
 .video-modal video {
-  width: 80%;
+  width: 100%;
   max-width: 600px;
   border-radius: 10px;
+  z-index: 1000; /* Certifique-se de que está abaixo do botão */
 }
+
 .video-modal button {
-  margin-top: 15px;
-  padding: 10px 20px;
-  background: #000; /* Preto escuro */
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  z-index: 1001;
+  padding: 10px 15px;
+  background-color: #000; /* Preto escuro */
   color: #fff;
   border: none;
   font-size: 1em;
   font-weight: bold;
-  cursor: pointer;
   border-radius: 5px;
-  z-index: 1000;
+  cursor: pointer;
 }
-
-/* Para garantir visibilidade e responsividade no celular */
 @media screen and (max-width: 768px) {
   .video-modal button {
-    position: relative;
-    font-size: 1.2em;
-    padding: 12px 24px;
+    font-size: 1em;
+    padding: 10px 15px;
   }
 }
+
 
 /* Estilos Responsivos */
 @media screen and (max-width: 768px) {
