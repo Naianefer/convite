@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lista de Casamento</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f5f5f5;
+      padding: 20px;
+    }
+    h1, h2 {
+      text-align: center;
+      color: #d45b78;
+    }
+    .formulario {
+      max-width: 400px;
+      margin: 0 auto 40px auto;
+      background: white;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px #ccc;
+    }
+    input, select, button {
+      width: 100%;
+      padding: 10px;
+      margin-top: 10px;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+    }
+    button {
+      background-color: #d45b78;
+      color: white;
+      border: none;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #b13f5c;
+    }
+    .lista {
+      max-width: 800px;
+      margin: 0 auto;
+    }
+    .item {
+      background: white;
+      margin: 8px 0;
+      padding: 10px;
+      border-radius: 8px;
+      box-shadow: 0 0 5px #ccc;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+    .reservado {
+      color: green;
+    }
+    .pendente {
+      color: #d45b78;
+    }
+    .acoes {
+      text-align: center;
+      margin-top: 30px;
+    }
+    .btn-pequeno {
+      margin-left: 10px;
+      font-size: 12px;
+      padding: 5px 10px;
+      background: #888;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    .btn-pequeno:hover {
+      background: #555;
+    }
+
+    /* Responsividade para telas pequenas */
+    @media (max-width: 600px) {
+      .formulario, .lista {
+        padding: 15px;
+        width: 95%;
+        margin: 0 auto;
+      }
+
+      .item {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .item span {
+        width: 100%;
+        margin-bottom: 5px;
+      }
+
+      .btn-pequeno {
+        width: auto;
+        margin-top: 5px;
+        margin-left: 0;
+      }
+
+      .acoes button {
+        width: 100%;
+        margin: 10px 0 0 0;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<h1>Lista de Casamento 💍</h1>
+
+<div class="formulario">
+  <h2>Reservar Presente</h2>
+  <form id="formReserva">
+    <input type="text" id="nome" placeholder="Seu nome" required>
+    <select id="presente" required></select>
+    <button type="submit">Reservar</button>
+  </form>
+</div>
+
+<div class="lista" id="listaPresentes">
+  <h2>Presentes</h2>
+</div>
+
+<div class="acoes">
+  <button onclick="exportarCSV()">📤 Exportar para Excel</button>
+  <button onclick="limparTudo()" style="background: #aaa; margin-left: 10px;">🧨 Limpar todas as reservas</button>
+</div>
+
+<script>
+  const presentes = [
+    "🍽️ Cozinha - Jogo de Pratos",
+    "🍽️ Cozinha - Jogo de Pratos",
+    "🍽️ Cozinha - Jogo de Pratos",
+    "🍽️ Cozinha - Jogo de Faqueiro",
+    "🍽️ Cozinha - Jogo de Xícaras",
+    "🍽️ Cozinha - Jogo de Taças",
+    "🍽️ Cozinha - Jogo de Taças",
+    "🍽️ Cozinha - Jogo de Taças",
+    "🍽️ Cozinha - Jogo de Copos",
+    "🍽️ Cozinha - Jogo de Copos",
+    "🍽️ Cozinha - Jogo de Copos",
+    "🍽️ Cozinha - Colheres de Cozinhar",
+    "🍽️ Cozinha - Potes de Mantimentos",
+    "🍽️ Cozinha - Lixeiras",
+    "🍽️ Cozinha - Tábua de Carne",
+    "🍽️ Cozinha - Escorredor de Louça",
+    "🍽️ Cozinha - Jogo de Panelas",
+    "🍽️ Cozinha - Peneiras",
+    "🍽️ Cozinha - Jarras de Vidro",
+    "🍽️ Cozinha - Espremedor de Laranja",
+    "🍽️ Cozinha - Bomboniere de Vidro",
+    "🍽️ Cozinha - Jogo de Facas",
+    "🍽️ Cozinha - Chaleiras",
+    "🍽️ Cozinha - Frigideiras",
+    "🍽️ Cozinha - Frigideiras",
+    "🍽️ Cozinha - Frigideiras",
+    "🍽️ Cozinha - Frigideiras",
+    "🍽️ Cozinha - Frigideiras",
+    "🍽️ Cozinha - Panela de Pressão",
+    "🍽️ Cozinha - Panos de Pratos",
+    "🍽️ Cozinha - Sanduicheira",
+    "🍽️ Cozinha - Centrifugador de Salada",
+    "🍽️ Cozinha - Garrafa de Café",
+    "🍽️ Cozinha - Fruteira de Vidro",
+    "🍽️ Cozinha - Conjunto de Sobremesa",
+    "🍽️ Cozinha - Potes Multiuso",
+    "🍽️ Cozinha - Potes Herméticos",
+    "🍽️ Cozinha - Cortinas",
+    "🛏️ Quarto - Travesseiros",
+    "🛏️ Quarto - Cobertores",
+    "🛏️ Quarto - Jogo de Cama Casal",
+    "🛏️ Quarto - Jogo de Cama Casal",
+    "🛏️ Quarto - Jogo de Cama Casal",
+    "🛏️ Quarto - Jogo de Cama Casal",
+    "🛏️ Quarto - Jogo de Cama Casal",
+    "🛏️ Quarto - Protetor de Colchão",
+    "🛏️ Quarto - Ventilador",
+    "🛏️ Quarto - Almofadas",
+    "🛏️ Quarto - Cortinas",
+    "🚿 Banheiro - Cesto de Roupa",
+    "🚿 Banheiro - Kit de Banheiro Lavabo",
+    "🚿 Banheiro - Tapetes",
+    "🚿 Banheiro - Toalhas",
+    "🚿 Banheiro - Toalhas",
+    "🚿 Banheiro - Toalhas",
+    "🚿 Banheiro - Toalhas",
+    "🚿 Banheiro - Toalhas",
+    "🚿 Banheiro - Toalhas pra Rosto",
+    "🚿 Banheiro - Lixeiras",
+    "🧺 Área de Serviço - Baldes",
+    "🧺 Área de Serviço - Ferro de Passar",
+    "🧺 Área de Serviço - Tábua de Passar",
+    "🧺 Área de Serviço - Varal de Chão"
+  ];
+
+  const form = document.getElementById('formReserva');
+  const listaDiv = document.getElementById('listaPresentes');
+  const select = document.getElementById('presente');
+
+  function carregarReservas() {
+    return JSON.parse(localStorage.getItem('reservasCasamento') || '[]');
+  }
+
+  function salvarReserva(reservas) {
+    localStorage.setItem('reservasCasamento', JSON.stringify(reservas));
+  }
+
+  function atualizarLista() {
+    const reservas = carregarReservas();
+    listaDiv.innerHTML = "<h2>Presentes</h2>";
+    presentes.forEach((item, index) => {
+      const reserva = reservas.find(r => r.index === index);
+      const div = document.createElement('div');
+      div.className = 'item';
+      div.innerHTML = `
+        <span>${item}</span>
+        <span class="${reserva ? 'reservado' : 'pendente'}">
+          ${reserva ? 'Reservado por ' + reserva.nome : 'Disponível'}
+          ${reserva ? `<button class="btn-pequeno" onclick="removerReserva(${index})">❌ Cancelar</button>` : ''}
+        </span>`;
+      listaDiv.appendChild(div);
+    });
+
+    select.innerHTML = '';
+    presentes.forEach((item, index) => {
+      const reservado = reservas.find(r => r.index === index);
+      if (!reservado) {
+        const opt = document.createElement('option');
+        opt.value = index;
+        opt.textContent = item;
+        select.appendChild(opt);
+      }
+    });
+  }
+
+  form.addEventListener('submit', e => {
+    e.preventDefault();
+    const nome = document.getElementById('nome').value.trim();
+    const index = parseInt(select.value);
+    if (!nome || isNaN(index)) return;
+    const reservas = carregarReservas();
+    reservas.push({ index, nome });
+    salvarReserva(reservas);
+    form.reset();
+    atualizarLista();
+  });
+
+  function removerReserva(index) {
+    if (!confirm("Tem certeza que deseja cancelar essa reserva?")) return;
+    let reservas = carregarReservas();
+    reservas = reservas.filter(r => r.index !== index);
+    salvarReserva(reservas);
+    atualizarLista();
+  }
+
+  function exportarCSV() {
+    const reservas = carregarReservas();
+    if (!reservas.length) {
+      alert("Nenhuma reserva foi feita ainda.");
+      return;
+    }
+
+    let csv = "Item,Convidado\n";
+    reservas.forEach(r => {
+      csv += `"${presentes[r.index]}","${r.nome}"\n`;
+    });
+
+    const blob = new Blob([csv], { type: "text/csv;charset=utf-8;" });
+    const url = URL.createObjectURL(blob);
+    const link = document.createElement("a");
+    link.setAttribute("href", url);
+    link.setAttribute("download", "lista-de-casamento.csv");
+    link.click();
+  }
+
+  function limparTudo() {
+    if (confirm("Tem certeza que deseja limpar TODAS as reservas?")) {
+      localStorage.removeItem('reservasCasamento');
+      atualizarLista();
+    }
+  }
+
+  atualizarLista();
+</script>
+
+</body>
+</html>
