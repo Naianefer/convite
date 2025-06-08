@@ -1,3 +1,4 @@
+/* Estilos gerais */
 body {
   margin: 0;
   font-family: 'Georgia', serif;
@@ -5,19 +6,18 @@ body {
   background-size: contain;
   background-attachment: fixed;
   background-repeat: no-repeat;
-  /* background-color: #fdfdfd; */
   text-align: center;
   color: #000;
   font-weight: 900;
 }
 
 .convite-container {
-  margin-top: 500px;
-  /* ajuste esse valor até o conteúdo ficar onde você quer */
+  margin-top: 500px; /* Ajuste esse valor conforme necessário */
   text-align: center;
   padding: 0 20px;
 }
 
+/* Título fixo */
 .titulo-fixo {
   position: absolute;
   top: 300px;
@@ -25,47 +25,33 @@ body {
   transform: translateX(-50%);
   z-index: 10;
   text-align: center;
-  background-color: white; /* Cor de fundo branca */
-  color: black; /* Cor do texto preta */
-  padding: 8px 2px; /* Espaçamento interno */
-  display: inline-block; /* Garante que o fundo fique ajustado ao texto */
-  border-radius: 10px; /* Opcional: cantos arredondados */
+  background-color: white;
+  color: black;
+  padding: 10px 20px; /* Aumentei o padding para mais espaço ao redor do texto */
+  display: inline-block;
+  border-radius: 10px;
 }
 
 .titulo-fixo h1 {
   font-family: 'Cursive', cursive;
-  font-size: 2.5em;
+  font-size: 2em; /* Ajustei o tamanho da fonte */
   margin: 0;
   color: #000;
 }
 
-.topo h1 {
-  font-family: 'Cursive', cursive;
-  font-size: 2.5em;
-  margin: 10px 0;
-  color: #000;
-}
-
-.topo span {
-  font-family: 'Cursive', cursive;
-  font-size: 0.em;
-}
-
-.topo {
-  text-align: center;  /* Centraliza todo o conteúdo */
-}
+/* Ajuste do subtítulo e toque */
 .subtitulo, .toque {
   font-size: 1.8em;
   margin-bottom: 20px;
   color: #000;
   font-weight: 900;
-  background-color: white;   /* Fundo branco ao redor do texto */
-  padding: 5px 10px;         /* Espaçamento interno para o texto */
-  border-radius: 4px;        /* Canto arredondado */
-  display: inline-block;     /* Faz o fundo acompanhar o texto */
-  text-align: center;        /* Alinha o texto ao centro */
-  margin-left: auto;         /* Centraliza o texto */
-  margin-right: auto;        /* Centraliza o texto */
+  background-color: white;  /* Fundo branco ao redor do texto */
+  padding: 10px 20px;       /* Espaçamento interno */
+  border-radius: 4px;       /* Canto arredondado */
+  display: inline-block;
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .toque {
@@ -73,9 +59,7 @@ body {
   font-style: italic;
 }
 
-
-
-
+/* Ajuste para imagens e outros elementos */
 .flores-topo {
   width: 120px;
   margin-top: 10px;
@@ -86,7 +70,7 @@ body {
   cursor: pointer;
 }
 
-
+/* Ícones */
 .icones {
   margin-top: 25px;
   display: flex;
@@ -98,7 +82,6 @@ body {
 .icones a {
   color: inherit;
   text-decoration: none;
-
 }
 
 .icone {
@@ -113,6 +96,7 @@ body {
   margin-bottom: 5px;
 }
 
+/* Modal de vídeo */
 .video-modal {
   position: fixed;
   top: 0;
@@ -140,4 +124,87 @@ body {
   border: none;
   font-size: 1em;
   cursor: pointer;
+}
+
+/* Estilos Responsivos */
+@media screen and (max-width: 768px) {
+  /* Ajuste o título fixo para a tela menor */
+  .titulo-fixo {
+    top: 10px;  /* Ajuste a posição do título */
+    font-size: 1.6em; /* Menor tamanho de fonte */
+    padding: 8px 15px; /* Ajuste o padding */
+  }
+
+  /* Ajuste o tamanho do subtítulo e toque */
+  .subtitulo, .toque {
+    font-size: 1.5em; /* Reduz o tamanho da fonte */
+    padding: 8px 15px; /* Ajuste o padding */
+  }
+
+  /* Ajuste da imagem */
+  .flores-topo {
+    width: 100px; /* Ajuste a largura da imagem */
+  }
+
+  /* Ajustes dos ícones */
+  .icones {
+    flex-direction: column; /* Exibe os ícones em uma coluna */
+    gap: 20px; /* Reduz o espaçamento entre os ícones */
+  }
+
+  .icone img {
+    width: 35px; /* Ajuste o tamanho da imagem */
+  }
+
+  /* Ajustes do modal de vídeo */
+  .video-modal video {
+    width: 90%; /* Ajuste para vídeos menores */
+    max-width: 100%; /* Não ultrapassa a tela */
+  }
+
+  /* Ajuste da imagem de fundo no celular */
+  body {
+    background-size: cover; /* Isso fará a imagem de fundo cobrir toda a área disponível */
+    background-position: center; /* Centraliza a imagem de fundo */
+    background-attachment: scroll; /* Permite que a imagem de fundo se mova com o conteúdo */
+  }
+
+  .convite-container {
+    margin-top: 0; /* Ajusta para ficar mais próximo do topo */
+  }
+
+  /* Ajuste a altura da imagem para cobrir o conteúdo */
+  .titulo-fixo {
+    background-size: cover; /* Garante que o fundo cubra o texto */
+    background-position: center center; /* Centraliza o fundo */
+    height: auto;
+  }
+}
+
+/* Para telas muito pequenas (celulares em modo retrato) */
+@media screen and (max-width: 480px) {
+  /* Ajuste o tamanho da fonte de título fixo e subtítulo */
+  .titulo-fixo h1 {
+    font-size: 1.4em; /* Menor tamanho para celulares */
+  }
+
+  .subtitulo, .toque {
+    font-size: 1.2em; /* Menor tamanho de fonte */
+  }
+
+  /* Ajuste a posição do convite-container */
+  .convite-container {
+    margin-top: 150px; /* Reduza a margem para se ajustar em telas pequenas */
+  }
+
+  /* Ajuste o tamanho das imagens e do conteúdo */
+  .flores-topo {
+    width: 80px; /* Menor tamanho para celular */
+  }
+
+  /* Ajusta a imagem de fundo no celular */
+  body {
+    background-size: cover; /* Agora a imagem cobre todo o fundo */
+    background-position: center;
+  }
 }
