@@ -7,7 +7,7 @@ body {
   background-attachment: fixed;
   background-repeat: no-repeat;
   text-align: center;
-  color: #000;
+  color: #fff;
   font-weight: 900;
 }
 
@@ -78,6 +78,7 @@ body {
   justify-content: center;
   gap: 30px;
   flex-wrap: wrap;
+  color: white; 
 }
 
 .icones a {
@@ -95,6 +96,8 @@ body {
 .icone img {
   width: 40px;
   margin-bottom: 5px;
+   filter: brightness(0) invert(1);
+ 
 }
 .video-modal {
   position: fixed;
@@ -172,9 +175,7 @@ body {
      filter: brightness(0.1) contrast(2); /* Deixa as imagens mais escuras e destacadas */
   }
 
-   .icones a {
-    color: #000000 !important; /* Preto escuro */
-  }
+
 
 
   /* Ajustes do modal de vídeo */
